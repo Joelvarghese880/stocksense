@@ -2,9 +2,8 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import {
   LayoutDashboard, Package, Tag, Warehouse,
-  ArrowLeftRight, AlertTriangle, LogOut
+  ArrowLeftRight, AlertTriangle, LogOut, TrendingUp, Users
 } from 'lucide-react'
-import { TrendingUp } from 'lucide-react'
 
 const navItems = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard },
@@ -14,6 +13,7 @@ const navItems = [
   { to: '/stock', label: 'Stock', icon: ArrowLeftRight },
   { to: '/alerts', label: 'Alerts', icon: AlertTriangle },
   { to: '/forecast', label: 'Forecast', icon: TrendingUp },
+  { to: '/users', label: 'Users', icon: Users, adminOnly: true },
 ]
 
 export default function Sidebar() {
@@ -48,23 +48,25 @@ export default function Sidebar() {
 
       {/* Nav links */}
       <nav style={{ flex: 1, padding: '16px 12px' }}>
-        {navItems.map(({ to, label, icon: Icon }) => (
-          <NavLink
-            key={to}
-            to={to}
-            end={to === '/'}
-            style={({ isActive }) => ({
-              display: 'flex', alignItems: 'center', gap: '12px',
-              padding: '10px 12px', borderRadius: '8px', marginBottom: '4px',
-              textDecoration: 'none', fontSize: '14px', fontWeight: 500,
-              background: isActive ? '#0f172a' : 'transparent',
-              color: isActive ? '#38bdf8' : '#94a3b8',
-            })}
-          >
-            <Icon size={18} />
-            {label}
-          </NavLink>
-        ))}
+        {navItems
+          .filter(item => !item.adminOnly || isAdmin())
+          .map(({ to, label, icon: Icon }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === '/'}
+              style={({ isActive }) => ({
+                display: 'flex', alignItems: 'center', gap: '12px',
+                padding: '10px 12px', borderRadius: '8px', marginBottom: '4px',
+                textDecoration: 'none', fontSize: '14px', fontWeight: 500,
+                background: isActive ? '#0f172a' : 'transparent',
+                color: isActive ? '#38bdf8' : '#94a3b8',
+              })}
+            >
+              <Icon size={18} />
+              {label}
+            </NavLink>
+          ))}
       </nav>
 
       {/* Logout */}

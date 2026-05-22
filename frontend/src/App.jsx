@@ -10,6 +10,7 @@ import Warehouses from './pages/Warehouses'
 import Stock from './pages/Stock'
 import Alerts from './pages/Alerts'
 import Forecast from './pages/Forecast'
+import Users from './pages/Users'
 
 function Layout({ children }) {
   return (
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/stock" element={<ProtectedRoute><Layout><Stock /></Layout></ProtectedRoute>} />
           <Route path="/alerts" element={<ProtectedRoute><Layout><Alerts /></Layout></ProtectedRoute>} />
           <Route path="/forecast" element={<ProtectedRoute><Layout><Forecast /></Layout></ProtectedRoute>} />
+          <Route path="/users" element={<ProtectedRoute><Layout><Users /></Layout></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
