@@ -14,6 +14,18 @@ A full-stack warehouse management system built with FastAPI, React, and PostgreS
 
 ---
 
+## 🔑 Demo Credentials
+
+Try the live demo instantly with these test accounts:
+
+| Role  | Email | Password |
+|-------|-------|----------|
+| Admin | admin@stocksense.com | demo1234 |
+| Staff | staff@stocksense.com | demo1234 |
+
+**Admin** can create products, manage users, transfer stock, and access all features.  
+**Staff** can view inventory, perform stock-in/out operations, and view alerts.
+
 ## Features
 
 - 🔐 JWT Authentication with Role-Based Access (Admin / Staff)
