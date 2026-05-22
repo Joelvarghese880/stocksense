@@ -13,7 +13,7 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 def register(
     data: UserRegister,
     db: Session = Depends(get_db),
-    current_user: User = Depends(require_admin)  # admin only
+    #current_user: User = Depends(require_admin)  # admin only
 ):
     existing = db.query(User).filter(User.email == data.email).first()
     if existing:
